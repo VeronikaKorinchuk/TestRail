@@ -9,7 +9,9 @@ public class LoginTest extends BaseTest {
     public void loginWithValidData() {
         String actualHeader = loginPage.
                 open().
-                login(user, password).isPageOpened().getHeader();
+                login(user, password).
+                isPageOpened().
+                getHeader();
         assertEquals(actualHeader, "DASHBOARD");
     }
 

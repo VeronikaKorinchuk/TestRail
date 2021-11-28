@@ -11,33 +11,20 @@
 | 6                     | User can reset password                                        |
 | **Dashboard**         |                                                                |
 | 7                     | Check that project can be created                              |
-| 8                     | Check that user can't create projects with same names          |
 | *Project*             |                                                                |
-| 9                     | Project can be edited                                          |
-| 10                    | Test run can be added from project page                        |
-| 11                    | Test case can be added from project page                       |
-| 12                    | Milestone can be added from project page                       |
-| *Todo*                |                                                                |
-| 13                    | Todos can be filtered by creator                               |
-| 14                    | Todos can be filtered by status                                |
+| 8                     | Project can be edited                                          |
 | *Milestones*          |                                                                |
-| 15                    | Milestone can't be created without filling required field      |
-| 16                    | Milestone can be deleted                                       |
-| 17                    | User can edit milestone                                        |
-| 18                    | Check milestone information                                    |
-| 19                    | Check the number of milestones                                 |
+| 9                     | Milestone can be created                                       |
+| 10                    | Milestone can be deleted                                       |
 |*Test runs and results*|                                                                |
-| 20                    | Test run can be added from test run and result page            |
-| 21                    | Test plan can be added from test run and result page           |
-| 22                    | User can group test runs                                       |
-| 23                    | User can order by attribute test runs                          |
+| 11                    | Test run can be added from test run and result page            |
+| 12                    | Test plan can be added from test run and result page           |
 | *Test cases*          |                                                                |
-| 24                    | Test case can be added from test case page                     |
-| 25                    | Section can be added from test case page                       |
-| 26                    | User can create a report                                       |
-| 27                    | User can run a test                                            |
+| 13                    | Test case can be added from test case page                     |
+| 14                    | Section can be added from test case page                       |
 | *Reports*             |                                                                |
-| 28                    | Report can be created from the report page                     |
-| 29                    | User can copy a report                                         |
-| 30                    | User can delete a report                                       |
-| 31                    | Check project name in report                                   |
+| 15                    | Report can be created from the report page                     |
+| 16                    | User can delete a report                                       |
+| **Administration**    |                                                                |
+| *Projects*            |                                                                |
+| 17                    | Check that project can be deleted                              |
