@@ -7,12 +7,12 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static pages.dashboard.DashboardPage.ACCEPT_ID;
 
-public class ProjectPage extends BasePage {
+public class ProjectDetailsPage extends BasePage {
 
     public static final String EDIT_XPATH = "//*[contains(@class, 'button-edit')]";
     String milestoneId = "navigation-milestones";
 
-    public ProjectPage editProject(String projectName) {
+    public ProjectDetailsPage editProject(String projectName) {
         $x(EDIT_XPATH).click();
         new Input("name").clear().write(projectName);
         $(By.id(ACCEPT_ID)).click();

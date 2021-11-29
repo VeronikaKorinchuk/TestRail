@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import tests.BaseTest;
 import static org.testng.Assert.assertEquals;
 
-public class ProjectTest extends BaseTest {
+public class ProjectDetailsTest extends BaseTest {
 
     @Test(description = "Project can be edited")
     public void editProject() {
@@ -14,6 +14,6 @@ public class ProjectTest extends BaseTest {
                 isPageOpened().
                 openProject("ThisTest").
                 editProject("Test");
-        assertEquals(projectPage.getMessage(), "Successfully updated the project.");
+        assertEquals(projectDetailsPage.getMessage(), "Successfully updated the project.");
     }
 }

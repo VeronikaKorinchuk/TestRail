@@ -8,7 +8,7 @@ import pages.administration.ProjectsPage;
 import pages.dashboard.DashboardPage;
 import pages.LoginPage;
 import pages.dashboard.MilestonePage;
-import pages.dashboard.ProjectPage;
+import pages.dashboard.ProjectDetailsPage;
 import utils.PropertyReader;
 
 public class BaseTest {
@@ -17,7 +17,7 @@ public class BaseTest {
     public String password;
     public LoginPage loginPage;
     public DashboardPage dashboardPage;
-    public ProjectPage projectPage;
+    public ProjectDetailsPage projectDetailsPage;
     public ProjectsPage projectsPage;
     public MilestonePage milestonePage;
 
@@ -33,7 +33,7 @@ public class BaseTest {
         Configuration.startMaximized = true;
         loginPage = new LoginPage();
         dashboardPage = new DashboardPage();
-        projectPage = new ProjectPage();
+        projectDetailsPage = new ProjectDetailsPage();
         projectsPage = new ProjectsPage();
         milestonePage = new MilestonePage();
     }

@@ -19,17 +19,17 @@ public class DashboardPage extends BasePage {
         return this;
     }
 
-    public ProjectPage createProject(String projectName, String announcement) {
+    public ProjectDetailsPage createProject(String projectName, String announcement) {
         $(By.id(ADD_PROJECT_ID)).click();
         new Input("name").write(projectName);
         new Input("announcement").write(announcement);
         new Input("suite_mode_single").select();
         $(By.id(ACCEPT_ID)).click();
-        return new ProjectPage();
+        return new ProjectDetailsPage();
     }
 
-    public ProjectPage openProject(String projectName) {
+    public ProjectDetailsPage openProject(String projectName) {
         $x(String.format(PROJECT_XPATH, projectName)).click();
-        return new ProjectPage();
+        return new ProjectDetailsPage();
     }
 }
