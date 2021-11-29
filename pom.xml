@@ -21,6 +21,7 @@
         <aspect.version>1.9.6</aspect.version>
         <allure.maven.version>2.10.0</allure.maven.version>
         <maven.surefire.version>3.0.0-M3</maven.surefire.version>
+        <javafaker.version>1.0.2</javafaker.version>
     </properties>
 
     <build>
@@ -108,6 +109,13 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspect.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
         </dependency>
 
     </dependencies>
