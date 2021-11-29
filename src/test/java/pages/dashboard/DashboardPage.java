@@ -1,6 +1,7 @@
 package pages.dashboard;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 import pages.BasePage;
 import wrappers.Input;
@@ -13,6 +14,11 @@ public class DashboardPage extends BasePage {
     public static final String ACCEPT_ID = "accept";
     public static final String PROJECT_XPATH = "//*[contains(@class, 'summary-auto')]//*[contains(@class, " +
             "'summary-title')]//*[contains(text(), '%s')]";
+
+    public DashboardPage open() {
+        Selenide.open("index.php?/dashboard");
+        return this;
+    }
 
     public DashboardPage isPageOpened() {
         $(By.id(DASHBOARD_ID)).shouldBe(Condition.visible);

@@ -8,13 +8,14 @@ public class ProjectsTest extends BaseTest {
 
     @Test(description = "Check that project can be deleted")
     public void deleteProject() {
+        String project = faker.book().title();
         loginPage.
                 open().
                 login(user, password).
-                isPageOpened();
+                isPageOpened().createProject(project, "");
         projectsPage.
                 openProjectsPage().
-                deleteProject("TestRail");
+                deleteProject(project);
         assertEquals(projectsPage.getMessage(), "Successfully deleted the project.");
     }
 }

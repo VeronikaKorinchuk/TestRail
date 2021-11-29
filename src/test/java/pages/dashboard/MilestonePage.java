@@ -4,8 +4,7 @@ import org.openqa.selenium.By;
 import pages.BasePage;
 import wrappers.Input;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class MilestonePage extends BasePage {
 

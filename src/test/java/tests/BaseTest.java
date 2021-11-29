@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.github.javafaker.Faker;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.administration.ProjectsPage;
@@ -20,6 +21,7 @@ public class BaseTest {
     public ProjectDetailsPage projectDetailsPage;
     public ProjectsPage projectsPage;
     public MilestonePage milestonePage;
+    public Faker faker;
 
     @BeforeMethod
     public void setup () {
@@ -36,10 +38,11 @@ public class BaseTest {
         projectDetailsPage = new ProjectDetailsPage();
         projectsPage = new ProjectsPage();
         milestonePage = new MilestonePage();
+        faker = new Faker();
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        Selenide.close();
+        Selenide.closeWebDriver();
     }
 }
