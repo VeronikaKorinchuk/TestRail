@@ -13,9 +13,9 @@ public class LoginPage extends BasePage{
     public static final String PASSWORD_ID = "password";
     public static final String LOGIN_BUTTON_ID = "button_primary";
     public static final String FORGOTPASSWORD_CSS = "[class='loginpage-forgotpassword']";
-    String emailError_xpath = "//*[@id='content']/form/*[@class='loginpage-message-image loginpage-message ']";
-    String passwordError_xpath = "//*[@id='content']/form//div/*[@class='loginpage-message-image loginpage-message ']";
-    String formError_css = "[class='error-text']";
+    String emailErrorXpath = "//*[@id='content']/form/*[@class='loginpage-message-image loginpage-message ']";
+    String passwordErrorXpath = "//*[@id='content']/form//div/*[@class='loginpage-message-image loginpage-message ']";
+    String formErrorCss = "[class='error-text']";
 
     public LoginPage open() {
         Selenide.open("index.php?/auth/login");
@@ -31,21 +31,21 @@ public class LoginPage extends BasePage{
     }
 
     public String getEmailErrorMessage() {
-        return $x(emailError_xpath).getText();
+        return $x(emailErrorXpath).getText();
     }
 
     public String getPasswordErrorMessage() {
-        return $x(passwordError_xpath).getText();
+        return $x(passwordErrorXpath).getText();
     }
 
     public String getFormErrorMessage() {
-        return $(formError_css).getText();
+        return $(formErrorCss).getText();
     }
 
     public void resetPassword(String user) {
         $(FORGOTPASSWORD_CSS).click();
         $(By.id(EMAIL_ID)).sendKeys(user);
         $(By.id(EMAIL_ID)).submit();
-        $(formError_css).shouldBe(Condition.visible);
+        $(formErrorCss).shouldBe(Condition.visible);
     }
 }

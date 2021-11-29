@@ -38,7 +38,7 @@ public class BaseTest {
         milestonePage = new MilestonePage();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         Selenide.close();
     }
