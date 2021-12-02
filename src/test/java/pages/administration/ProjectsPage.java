@@ -14,7 +14,6 @@ public class ProjectsPage extends BasePage {
     public static final String DELETE_PROJECT_XPATH = "//*[contains(text(), '%s')]//ancestor::*[contains(@class, " +
             "'hoverSensitive')]//descendant::*[@class='icon-small-delete']";
     public static final String DELETE_CHECKBOX_XPATH = "//*[@class='dialog-confirm']//child::strong";
-    public static final String PROJECT_NAMES_XPATH = "//*[contains(@class, 'hoverSensitive')]";
 
     public ProjectsPage open() {
         Selenide.open("index.php?/admin/projects/overview");
@@ -33,9 +32,5 @@ public class ProjectsPage extends BasePage {
         $x(DELETE_CHECKBOX_XPATH).click();
         $x(CONFIRM_DELETE_XPATH).click();
         return this;
-    }
-
-    public String getProjectNames() {
-        return $$x(PROJECT_NAMES_XPATH).last().getText();
     }
 }
