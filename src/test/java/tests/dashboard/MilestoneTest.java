@@ -54,7 +54,8 @@ public class MilestoneTest extends BaseTest {
                 openProject(project).
                 openMilestones().
                 addMilestone(milestone);
-        projectDetailsPage.openMilestones().
+        projectDetailsPage.
+                openMilestones().
                 editMilestone(milestone, editedMilestone);
         assertEquals(milestonePage.getMessage(), "Successfully updated the milestone.");
     }
