@@ -6,10 +6,8 @@ import com.github.javafaker.Faker;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.administration.ProjectsPage;
-import pages.dashboard.DashboardPage;
+import pages.dashboard.*;
 import pages.LoginPage;
-import pages.dashboard.MilestonePage;
-import pages.dashboard.ProjectDetailsPage;
 import utils.PropertyReader;
 
 public class BaseTest {
@@ -21,6 +19,8 @@ public class BaseTest {
     public ProjectDetailsPage projectDetailsPage;
     public ProjectsPage projectsPage;
     public MilestonePage milestonePage;
+    public TestRunAndResultsPage testRunAndResultsPage;
+    public TestCasesPage testCasesPage;
     public Faker faker;
 
     @BeforeMethod
@@ -38,6 +38,8 @@ public class BaseTest {
         projectDetailsPage = new ProjectDetailsPage();
         projectsPage = new ProjectsPage();
         milestonePage = new MilestonePage();
+        testRunAndResultsPage = new TestRunAndResultsPage();
+        testCasesPage = new TestCasesPage();
         faker = new Faker();
     }
 
