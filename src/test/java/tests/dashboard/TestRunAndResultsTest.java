@@ -24,7 +24,7 @@ public class TestRunAndResultsTest extends BaseTest {
 
     @Test(description = "Test run can be deleted")
     public void deleteTestRun() {
-        String project = faker.book().title();
+        String project = faker.book().genre();
         String testRun = faker.book().genre();
         loginPage.
                 open().
@@ -43,7 +43,7 @@ public class TestRunAndResultsTest extends BaseTest {
 
     @Test(description = "Test run can be edited")
     public void editTestRun() {
-        String project = faker.book().title();
+        String project = faker.book().genre();
         String testRun = faker.book().genre();
         String editedTestRun = faker.book().genre();
         loginPage.

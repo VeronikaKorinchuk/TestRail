@@ -8,7 +8,7 @@ public class DashboardTest extends BaseTest{
 
     @Test(description = "Check that project can be created from dashboard")
     public void createProject() {
-        String project = faker.book().title();
+        String project = faker.book().genre();
         loginPage.
                 open().
                 login(user, password).

@@ -8,7 +8,7 @@ public class MilestoneTest extends BaseTest {
 
     @Test(description = "Milestone can be created")
     public void createMilestone() {
-        String project = faker.book().title();
+        String project = faker.book().genre();
         String milestone = faker.book().genre();
         loginPage.
                 open().
@@ -24,7 +24,7 @@ public class MilestoneTest extends BaseTest {
 
     @Test(description = "Milestone can be deleted")
     public void deleteMilestone() {
-        String project = faker.book().title();
+        String project = faker.book().genre();
         String milestone = faker.book().genre();
         loginPage.
                 open().
@@ -42,7 +42,7 @@ public class MilestoneTest extends BaseTest {
 
     @Test(description = "Milestone can be edited")
     public void editMilestone() {
-        String project = faker.book().title();
+        String project = faker.book().genre();
         String milestone = faker.book().genre();
         String editedMilestone = faker.book().genre();
         loginPage.
