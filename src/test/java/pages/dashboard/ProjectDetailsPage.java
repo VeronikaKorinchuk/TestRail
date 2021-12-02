@@ -2,25 +2,24 @@ package pages.dashboard;
 
 import org.openqa.selenium.By;
 import pages.BasePage;
-import wrappers.Input;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
-import static pages.dashboard.DashboardPage.ACCEPT_ID;
 
 public class ProjectDetailsPage extends BasePage {
 
-    public static final String EDIT_XPATH = "//*[contains(@class, 'button-edit')]";
-    String milestoneId = "navigation-milestones";
-
-    public ProjectDetailsPage editProject(String projectName) {
-        $x(EDIT_XPATH).click();
-        new Input("name").clear().write(projectName);
-        $(By.id(ACCEPT_ID)).click();
-      return this;
-    }
+    public static final String NAVIGATION = "navigation-%s";
 
     public MilestonePage openMilestones() {
-        $(By.id(milestoneId)).click();
+        $(By.id(String.format(NAVIGATION, "milestones"))).click();
         return new MilestonePage();
+    }
+
+    public TestRunAndResultsPage openTestRunAndResultsPage() {
+        $(By.id(String.format(NAVIGATION, "runs"))).click();
+        return new TestRunAndResultsPage();
+    }
+
+    public TestCasesPage openTestCasesPage() {
+        $(By.id(String.format(NAVIGATION, "suites"))).click();
+        return new TestCasesPage();
     }
 }
