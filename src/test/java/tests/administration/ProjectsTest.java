@@ -12,10 +12,22 @@ public class ProjectsTest extends BaseTest {
         loginPage.
                 open().
                 login(user, password).
-                isPageOpened().createProject(project, "");
+                createProject(project, "");
         projectsPage.
-                openProjectsPage().
+                open().
                 deleteProject(project);
         assertEquals(projectsPage.getMessage(), "Successfully deleted the project.");
+    }
+
+    @Test(description = "Project can be edited")
+    public void editProject() {
+        String project = faker.book().title();
+        String editedProject = faker.book().title();
+        loginPage.
+                open().
+                login(user, password).
+                createProject(project, "").
+                editProject(project, editedProject);
+        assertEquals(projectDetailsPage.getMessage(), "Successfully updated the project.");
     }
 }
