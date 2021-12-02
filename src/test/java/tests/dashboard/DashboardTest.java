@@ -6,13 +6,13 @@ import static org.testng.Assert.assertEquals;
 
 public class DashboardTest extends BaseTest{
 
-    @Test(description = "Check that project can be created")
+    @Test(description = "Check that project can be created from dashboard")
     public void createProject() {
+        String project = faker.book().title();
         loginPage.
                 open().
                 login(user, password).
-                isPageOpened().
-                createProject("TestRail", "This is diploma project");
-        assertEquals(projectsPage.getProjectNames(), "TestRail");
+                createProject(project, "");
+        assertEquals(projectsPage.getMessage(), "Successfully added the new project.");
     }
 }
