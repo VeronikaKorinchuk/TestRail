@@ -6,7 +6,6 @@ import com.github.javafaker.Faker;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
 import pages.administration.ProjectsPage;
 import pages.dashboard.*;
 import pages.LoginPage;
@@ -25,7 +24,6 @@ public class BaseTest {
     public TestCasesPage testCasesPage;
     public Faker faker;
 
-    @Parameters("browser")
     @BeforeMethod
     public void setup (@Optional("chrome") String browser) {
         Configuration.baseUrl = System.getenv().getOrDefault("TESTRAIL_URL",
@@ -40,7 +38,6 @@ public class BaseTest {
             Configuration.browser = "opera";
         }
         Configuration.startMaximized = true;
-        Configuration.headless = true;
         loginPage = new LoginPage();
         dashboardPage = new DashboardPage();
         projectDetailsPage = new ProjectDetailsPage();

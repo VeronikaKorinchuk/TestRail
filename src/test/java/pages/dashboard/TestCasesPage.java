@@ -1,5 +1,6 @@
 package pages.dashboard;
 
+import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 import pages.BasePage;
 import wrappers.Input;
@@ -39,6 +40,7 @@ public class TestCasesPage extends BasePage {
         new Input("title").clear();
         new Input("title").write(editedTestCase);
         $(By.id(ACCEPT_ID)).click();
+        $(By.id(CONFIRM_EDITION_ID)).shouldBe(Condition.appear);
         $(By.id(CONFIRM_EDITION_ID)).click();
         return this;
     }
