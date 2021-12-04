@@ -1,12 +1,7 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
 import static org.testng.Assert.*;
-import static pages.BasePage.CONFIRM_DELETE_XPATH;
-import static pages.administration.ProjectsPage.DELETE_CHECKBOX_XPATH;
 
 public class LoginTest extends BaseTest {
 

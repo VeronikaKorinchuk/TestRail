@@ -19,10 +19,11 @@ public class TestCasesPage extends BasePage {
     public static final String CONFIRM_DELETE_XPATH = "//*[@id='casesDeletionDialog']//descendant::*[contains(@class, " +
             "'dialog-action-default')]";
 
-    public TestCasesPage addTestCase(String testCase) {
+    public TestCasesPage createTestCase(String testCase) {
         $(By.id(ADD_TEST_CASE_ID)).click();
         new Input("title").write(testCase);
         $(By.id(ACCEPT_ID)).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 

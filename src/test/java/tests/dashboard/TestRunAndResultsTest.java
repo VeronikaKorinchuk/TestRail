@@ -18,7 +18,7 @@ public class TestRunAndResultsTest extends BaseTest {
                 open().
                 openProject(project).
                 openTestRunAndResultsPage().
-                addTestRun(testRun);
+                createTestRun(testRun);
         assertEquals(testRunAndResultsPage.getMessage(), "Successfully added the new test run.");
     }
 
@@ -34,7 +34,7 @@ public class TestRunAndResultsTest extends BaseTest {
                 open().
                 openProject(project).
                 openTestRunAndResultsPage().
-                addTestRun(testRun);
+                createTestRun(testRun);
         projectDetailsPage.
                 openTestRunAndResultsPage().
                 deleteTestRun(testRun);
@@ -54,7 +54,7 @@ public class TestRunAndResultsTest extends BaseTest {
                 open().
                 openProject(project).
                 openTestRunAndResultsPage().
-                addTestRun(testRun);
+                createTestRun(testRun);
         projectDetailsPage.
                 openTestRunAndResultsPage().
                 editTestRun(testRun, editedTestRun);

@@ -2,7 +2,7 @@ package tests.administration;
 
 import org.testng.annotations.Test;
 import tests.BaseTest;
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class ProjectsTest extends BaseTest {
 
@@ -16,7 +16,9 @@ public class ProjectsTest extends BaseTest {
         projectsPage.
                 open().
                 deleteProject(project);
-        assertEquals(projectsPage.getMessage(), "Successfully deleted the project.");
+        assertEquals(projectsPage.getMessage(), "Successfully deleted the project.",
+                "You have got a delete confirmation");
+        assertFalse(projectsPage.isProjectVisible(project), "Project is successfully deleted");
     }
 
     @Test(description = "Project can be edited")
@@ -28,6 +30,8 @@ public class ProjectsTest extends BaseTest {
                 login(user, password).
                 createProject(project, "").
                 editProject(project, editedProject);
-        assertEquals(projectDetailsPage.getMessage(), "Successfully updated the project.");
+        assertEquals(projectDetailsPage.getMessage(), "Successfully updated the project.",
+                "You have got an edit confirmation");
+        assertTrue(projectsPage.isProjectVisible(editedProject), "Project is successfully updated");
     }
 }

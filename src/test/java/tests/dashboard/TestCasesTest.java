@@ -18,7 +18,7 @@ public class TestCasesTest extends BaseTest {
                 open().
                 openProject(project).
                 openTestCasesPage().
-                addTestCase(testCase);
+                createTestCase(testCase);
         assertEquals(testCasesPage.getMessage(), "Successfully added the new test case. Add another");
     }
 
@@ -34,7 +34,7 @@ public class TestCasesTest extends BaseTest {
                 open().
                 openProject(project).
                 openTestCasesPage().
-                addTestCase(testCase);
+                createTestCase(testCase);
         projectDetailsPage.
                 openTestCasesPage().
                 deleteTestCase(testCase);
@@ -54,7 +54,7 @@ public class TestCasesTest extends BaseTest {
                 open().
                 openProject(project).
                 openTestCasesPage().
-                addTestCase(testCase);
+                createTestCase(testCase);
         projectDetailsPage.
                 openTestCasesPage().
                 editTestCase(testCase, editedTestCase);

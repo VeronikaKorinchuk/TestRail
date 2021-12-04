@@ -1,5 +1,6 @@
 package pages.dashboard;
 
+import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 import pages.BasePage;
 import wrappers.Input;
@@ -19,11 +20,12 @@ public class TestRunAndResultsPage extends BasePage {
     public static final String EDIT_TEST_RUN_XPATH = "//*[contains(text(), '%s')]//ancestor::*[contains(@class, " +
             "'table')]//descendant::*[contains(text(), 'Edit')]";
 
-    public TestRunAndResultsPage addTestRun(String testName) {
+    public TestRunAndResultsPage createTestRun(String testName) {
         $(By.id(ADD_TEST_RUN_ID)).click();
         new Input("name").clear();
         new Input("name").write(testName);
         $(By.id(ACCEPT_ID)).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 
@@ -32,6 +34,7 @@ public class TestRunAndResultsPage extends BasePage {
         $(By.id(DELETE_BUTTON_ID)).click();
         $(By.id(DELETE_CHECKBOX_ID)).click();
         $x(CONFIRM_DELETE_XPATH).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 
@@ -40,6 +43,7 @@ public class TestRunAndResultsPage extends BasePage {
         new Input("name").clear();
         new Input("name").write(editedTestRun);
         $(By.id(ACCEPT_ID)).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 }
