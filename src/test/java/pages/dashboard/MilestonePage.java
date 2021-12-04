@@ -2,6 +2,7 @@ package pages.dashboard;
 
 import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.BasePage;
 import wrappers.Input;
 import static com.codeborne.selenide.Selenide.*;
@@ -14,6 +15,7 @@ public class MilestonePage extends BasePage {
             "'table')]//descendant::*[contains(@class, 'icon-small-delete')]";
     public static final String EDIT_MILESTONE_XPATH = "//*[contains(text(), '%s')]//ancestor::*[contains(@class, " +
             "'table')]//descendant::*[contains(text(), 'Edit')]";
+    public static final String MILESTONE_LIST_XPATH = "//*[contains(@class, 'summary-title')]";
 
 
     public MilestonePage addMilestone(String milestoneName) {
@@ -38,5 +40,10 @@ public class MilestonePage extends BasePage {
         $(By.id(ACCEPT_ID)).click();
         $x(messageXpath).shouldBe(Condition.visible);
         return this;
+    }
+
+    public boolean isMilestoneVisible (String milestoneName) {
+        WebElement visibleMilestone = $$x(MILESTONE_LIST_XPATH).findBy(Condition.text(milestoneName));
+        return visibleMilestone.isDisplayed();
     }
 }

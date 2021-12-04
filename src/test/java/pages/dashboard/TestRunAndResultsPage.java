@@ -2,10 +2,10 @@ package pages.dashboard;
 
 import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.BasePage;
 import wrappers.Input;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestRunAndResultsPage extends BasePage {
 
@@ -19,6 +19,7 @@ public class TestRunAndResultsPage extends BasePage {
             "'dialog-action-default')]";
     public static final String EDIT_TEST_RUN_XPATH = "//*[contains(text(), '%s')]//ancestor::*[contains(@class, " +
             "'table')]//descendant::*[contains(text(), 'Edit')]";
+    public static final String TEST_RUN_LIST_XPATH = "//*[contains(@class, 'summary-title')]";
 
     public TestRunAndResultsPage createTestRun(String testName) {
         $(By.id(ADD_TEST_RUN_ID)).click();
@@ -45,5 +46,10 @@ public class TestRunAndResultsPage extends BasePage {
         $(By.id(ACCEPT_ID)).click();
         $x(messageXpath).shouldBe(Condition.visible);
         return this;
+    }
+
+    public boolean isTestRunVisible (String testRunName) {
+        WebElement visibleTestRun = $$x(TEST_RUN_LIST_XPATH).findBy(Condition.text(testRunName));
+        return visibleTestRun.isDisplayed();
     }
 }

@@ -2,7 +2,8 @@ package tests.dashboard;
 
 import org.testng.annotations.Test;
 import tests.BaseTest;
-import static org.testng.Assert.assertEquals;
+
+import static org.testng.Assert.*;
 
 public class TestCasesTest extends BaseTest {
 
@@ -19,7 +20,8 @@ public class TestCasesTest extends BaseTest {
                 openProject(project).
                 openTestCasesPage().
                 createTestCase(testCase);
-        assertEquals(testCasesPage.getMessage(), "Successfully added the new test case. Add another");
+        assertEquals(testCasesPage.getMessage(), "Successfully added the new test case. Add another",
+                "You have received a confirmation of test case creation");
     }
 
     @Test(description = "Test case can be deleted")
@@ -38,7 +40,7 @@ public class TestCasesTest extends BaseTest {
         projectDetailsPage.
                 openTestCasesPage().
                 deleteTestCase(testCase);
-        assertEquals(testCasesPage.getMessage(), "");
+        assertFalse(testCasesPage.isTestCaseVisible(testCase), "Test case is successfully deleted");
     }
 
     @Test(description = "Test case can be edited")
@@ -59,5 +61,6 @@ public class TestCasesTest extends BaseTest {
                 openTestCasesPage().
                 editTestCase(testCase, editedTestCase);
         assertEquals(testCasesPage.getMessage(), "Successfully updated the test cases.");
+        assertFalse(testCasesPage.isTestCaseVisible(testCase), "Test case is successfully updated");
     }
 }

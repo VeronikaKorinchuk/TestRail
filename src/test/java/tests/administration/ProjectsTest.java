@@ -17,7 +17,7 @@ public class ProjectsTest extends BaseTest {
                 open().
                 deleteProject(project);
         assertEquals(projectsPage.getMessage(), "Successfully deleted the project.",
-                "You have got a delete confirmation");
+                "You have received a confirmation of project deletion");
         assertFalse(projectsPage.isProjectVisible(project), "Project is successfully deleted");
     }
 
@@ -31,7 +31,7 @@ public class ProjectsTest extends BaseTest {
                 createProject(project, "").
                 editProject(project, editedProject);
         assertEquals(projectDetailsPage.getMessage(), "Successfully updated the project.",
-                "You have got an edit confirmation");
+                "You have received a confirmation of project edition");
         assertTrue(projectsPage.isProjectVisible(editedProject), "Project is successfully updated");
     }
 }

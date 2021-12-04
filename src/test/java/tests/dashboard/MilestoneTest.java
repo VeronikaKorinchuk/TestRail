@@ -2,7 +2,8 @@ package tests.dashboard;
 
 import org.testng.annotations.Test;
 import tests.BaseTest;
-import static org.testng.Assert.assertEquals;
+
+import static org.testng.Assert.*;
 
 public class MilestoneTest extends BaseTest {
 
@@ -19,7 +20,9 @@ public class MilestoneTest extends BaseTest {
                 openProject(project).
                 openMilestones().
                 addMilestone(milestone);
-        assertEquals(milestonePage.getMessage(), "Successfully added the new milestone.");
+        assertEquals(milestonePage.getMessage(), "Successfully added the new milestone.",
+                "You have received a confirmation of milestone creation");
+        assertTrue(milestonePage.isMilestoneVisible(milestone), "Milestone is successfully created");
     }
 
     @Test(description = "Milestone can be deleted")
@@ -37,7 +40,9 @@ public class MilestoneTest extends BaseTest {
                 addMilestone(milestone);
         projectDetailsPage.openMilestones().
                 deleteMilestone(milestone);
-        assertEquals(milestonePage.getMessage(), "Successfully deleted the milestone (s).");
+        assertEquals(milestonePage.getMessage(), "Successfully deleted the milestone (s).",
+                "You have received a confirmation of milestone deletion");
+        assertFalse(milestonePage.isMilestoneVisible(milestone), "Milestone is successfully deleted");
     }
 
     @Test(description = "Milestone can be edited")
@@ -57,6 +62,8 @@ public class MilestoneTest extends BaseTest {
         projectDetailsPage.
                 openMilestones().
                 editMilestone(milestone, editedMilestone);
-        assertEquals(milestonePage.getMessage(), "Successfully updated the milestone.");
+        assertEquals(milestonePage.getMessage(), "Successfully updated the milestone.",
+                "You have received a confirmation of milestone edition");
+        assertTrue(milestonePage.isMilestoneVisible(editedMilestone), "Milestone is successfully updated");
     }
 }

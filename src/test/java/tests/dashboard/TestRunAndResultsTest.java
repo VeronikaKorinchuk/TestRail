@@ -2,7 +2,8 @@ package tests.dashboard;
 
 import org.testng.annotations.Test;
 import tests.BaseTest;
-import static org.testng.Assert.assertEquals;
+
+import static org.testng.Assert.*;
 
 public class TestRunAndResultsTest extends BaseTest {
 
@@ -19,7 +20,13 @@ public class TestRunAndResultsTest extends BaseTest {
                 openProject(project).
                 openTestRunAndResultsPage().
                 createTestRun(testRun);
-        assertEquals(testRunAndResultsPage.getMessage(), "Successfully added the new test run.");
+        assertEquals(testRunAndResultsPage.getMessage(), "Successfully added the new test run.",
+                "You have received a confirmation of test run creation");
+        dashboardPage.
+                open().
+                openProject(project).
+                openTestRunAndResultsPage();
+        assertTrue(testRunAndResultsPage.isTestRunVisible(testRun),"Test run is successfully created");
     }
 
     @Test(description = "Test run can be deleted")
@@ -38,7 +45,9 @@ public class TestRunAndResultsTest extends BaseTest {
         projectDetailsPage.
                 openTestRunAndResultsPage().
                 deleteTestRun(testRun);
-        assertEquals(testRunAndResultsPage.getMessage(), "Successfully deleted the test runs.");
+        assertEquals(testRunAndResultsPage.getMessage(), "Successfully deleted the test runs.",
+                "You have received a confirmation of test run deletion");
+        assertFalse(testRunAndResultsPage.isTestRunVisible(testRun),"Test run is successfully deleted");
     }
 
     @Test(description = "Test run can be edited")
@@ -58,6 +67,8 @@ public class TestRunAndResultsTest extends BaseTest {
         projectDetailsPage.
                 openTestRunAndResultsPage().
                 editTestRun(testRun, editedTestRun);
-        assertEquals(testRunAndResultsPage.getMessage(), "Successfully updated the test run.");
+        assertEquals(testRunAndResultsPage.getMessage(), "Successfully updated the test run.",
+                "You have received a confirmation of test run edition");
+        assertFalse(testRunAndResultsPage.isTestRunVisible(testRun),"Test run is successfully updated");
     }
 }

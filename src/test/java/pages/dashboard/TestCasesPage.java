@@ -2,6 +2,7 @@ package pages.dashboard;
 
 import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.BasePage;
 import wrappers.Input;
 import static com.codeborne.selenide.Selenide.*;
@@ -18,6 +19,7 @@ public class TestCasesPage extends BasePage {
     public static final String CONFIRM_EDITION_ID = "confirmDiffSubmit";
     public static final String CONFIRM_DELETE_XPATH = "//*[@id='casesDeletionDialog']//descendant::*[contains(@class, " +
             "'dialog-action-default')]";
+    public static final String TEST_CASE_LIST_CLASSNAME = "title";
 
     public TestCasesPage createTestCase(String testCase) {
         $(By.id(ADD_TEST_CASE_ID)).click();
@@ -31,6 +33,7 @@ public class TestCasesPage extends BasePage {
         $x(String.format(SELECT_TEST_CASE_XPATH, testCase)).click();
         $(By.id(DELETE_ID)).click();
         $x(CONFIRM_DELETE_XPATH).click();
+        $x(CONFIRM_DELETE_XPATH).shouldNotBe(Condition.visible);
         return this;
     }
 
@@ -45,5 +48,10 @@ public class TestCasesPage extends BasePage {
         $(By.id(CONFIRM_EDITION_ID)).click();
         $x(messageXpath).shouldBe(Condition.visible);
         return this;
+    }
+
+    public boolean isTestCaseVisible (String testCaseName) {
+        WebElement visibleTestCase = $$(By.className(TEST_CASE_LIST_CLASSNAME)).findBy(Condition.text(testCaseName));
+        return visibleTestCase.isDisplayed();
     }
 }
