@@ -8,8 +8,8 @@ public class TestRunAndResultsTest extends BaseTest {
 
     @Test(description = "Test run can be created")
     public void createTestRun() {
-        String project = faker.book().title();
-        String testRun = faker.book().genre();
+        String project = faker.food().dish();
+        String testRun = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
@@ -24,8 +24,8 @@ public class TestRunAndResultsTest extends BaseTest {
 
     @Test(description = "Test run can be deleted")
     public void deleteTestRun() {
-        String project = faker.book().genre();
-        String testRun = faker.book().genre();
+        String project = faker.food().dish();
+        String testRun = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
@@ -43,9 +43,9 @@ public class TestRunAndResultsTest extends BaseTest {
 
     @Test(description = "Test run can be edited")
     public void editTestRun() {
-        String project = faker.book().genre();
-        String testRun = faker.book().genre();
-        String editedTestRun = faker.book().genre();
+        String project = faker.food().dish();
+        String testRun = faker.food().dish();
+        String editedTestRun = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).

@@ -8,8 +8,8 @@ public class TestCasesTest extends BaseTest {
 
     @Test(description = "Test case can be created")
     public void createTestCase() {
-        String project = faker.book().genre();
-        String testCase = faker.book().genre();
+        String project = faker.food().dish();
+        String testCase = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
@@ -24,8 +24,8 @@ public class TestCasesTest extends BaseTest {
 
     @Test(description = "Test case can be deleted")
     public void deleteTestCase() {
-        String project = faker.book().genre();
-        String testCase = faker.book().genre();
+        String project = faker.food().dish();
+        String testCase = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
@@ -43,9 +43,9 @@ public class TestCasesTest extends BaseTest {
 
     @Test(description = "Test case can be edited")
     public void editTestCase() {
-        String project = faker.book().genre();
-        String testCase = faker.book().genre();
-        String editedTestCase = faker.book().genre();
+        String project = faker.food().dish();
+        String testCase = faker.food().dish();
+        String editedTestCase = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).

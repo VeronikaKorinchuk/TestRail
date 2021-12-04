@@ -8,8 +8,8 @@ public class MilestoneTest extends BaseTest {
 
     @Test(description = "Milestone can be created")
     public void createMilestone() {
-        String project = faker.book().genre();
-        String milestone = faker.book().genre();
+        String project = faker.food().dish();
+        String milestone = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
@@ -24,8 +24,8 @@ public class MilestoneTest extends BaseTest {
 
     @Test(description = "Milestone can be deleted")
     public void deleteMilestone() {
-        String project = faker.book().genre();
-        String milestone = faker.book().genre();
+        String project = faker.food().dish();
+        String milestone = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
@@ -42,9 +42,9 @@ public class MilestoneTest extends BaseTest {
 
     @Test(description = "Milestone can be edited")
     public void editMilestone() {
-        String project = faker.book().genre();
-        String milestone = faker.book().genre();
-        String editedMilestone = faker.book().genre();
+        String project = faker.food().dish();
+        String milestone = faker.food().dish();
+        String editedMilestone = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).

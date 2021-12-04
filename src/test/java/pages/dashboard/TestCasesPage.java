@@ -42,6 +42,7 @@ public class TestCasesPage extends BasePage {
         $(By.id(ACCEPT_ID)).click();
         $(By.id(CONFIRM_EDITION_ID)).shouldBe(Condition.appear);
         $(By.id(CONFIRM_EDITION_ID)).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 }

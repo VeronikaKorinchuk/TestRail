@@ -1,5 +1,6 @@
 package pages.administration;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 import pages.BasePage;
@@ -22,6 +23,7 @@ public class ProjectsPage extends BasePage {
         $x(String.format(MANAGE_PROJECT_XPATH, projectName, "edit")).click();
         new Input("name").clear().write(editedProjectName);
         $(By.id(ACCEPT_ID)).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 

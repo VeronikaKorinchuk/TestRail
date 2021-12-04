@@ -1,5 +1,6 @@
 package pages.dashboard;
 
+import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 import pages.BasePage;
 import wrappers.Input;
@@ -33,6 +34,7 @@ public class MilestonePage extends BasePage {
         new Input("name").clear();
         new Input("name").write(editedMilestoneName);
         $(By.id(ACCEPT_ID)).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 }

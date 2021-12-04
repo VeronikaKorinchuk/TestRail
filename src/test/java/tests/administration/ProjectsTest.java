@@ -8,7 +8,7 @@ public class ProjectsTest extends BaseTest {
 
     @Test(description = "Check that project can be deleted")
     public void deleteProject() {
-        String project = faker.book().genre();
+        String project = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
@@ -21,8 +21,8 @@ public class ProjectsTest extends BaseTest {
 
     @Test(description = "Project can be edited")
     public void editProject() {
-        String project = faker.book().genre();
-        String editedProject = faker.book().genre();
+        String project = faker.food().dish();
+        String editedProject = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
