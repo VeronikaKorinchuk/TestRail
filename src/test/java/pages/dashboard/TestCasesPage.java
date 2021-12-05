@@ -19,7 +19,8 @@ public class TestCasesPage extends BasePage {
     public static final String CONFIRM_EDITION_ID = "confirmDiffSubmit";
     public static final String CONFIRM_DELETE_XPATH = "//*[@id='casesDeletionDialog']//descendant::*[contains(@class, " +
             "'dialog-action-default')]";
-    public static final String TEST_CASE_LIST_CLASSNAME = "title";
+    public static final String TEST_CASE_LIST_XPATH = "//*[contains(@class, 'caseRow ')]//descendant::*[contains" +
+            "(@class, 'title')]";
 
     public TestCasesPage createTestCase(String testCase) {
         $(By.id(ADD_TEST_CASE_ID)).click();
@@ -51,7 +52,7 @@ public class TestCasesPage extends BasePage {
     }
 
     public boolean isTestCaseVisible (String testCaseName) {
-        WebElement visibleTestCase = $$(By.className(TEST_CASE_LIST_CLASSNAME)).findBy(Condition.text(testCaseName));
+        WebElement visibleTestCase = $$x(TEST_CASE_LIST_XPATH).findBy(Condition.text(testCaseName));
         return visibleTestCase.isDisplayed();
     }
 }

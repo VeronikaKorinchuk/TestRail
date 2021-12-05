@@ -2,19 +2,18 @@ package tests.dashboard;
 
 import org.testng.annotations.Test;
 import tests.BaseTest;
-
 import static org.testng.Assert.*;
 
 public class TestCasesTest extends BaseTest {
 
     @Test(description = "Test case can be created")
     public void createTestCase() {
-        String project = faker.food().dish();
+        String project = faker.food().vegetable();
         String testCase = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         dashboardPage.
                 open().
                 openProject(project).
@@ -31,7 +30,7 @@ public class TestCasesTest extends BaseTest {
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         dashboardPage.
                 open().
                 openProject(project).
@@ -40,18 +39,18 @@ public class TestCasesTest extends BaseTest {
         projectDetailsPage.
                 openTestCasesPage().
                 deleteTestCase(testCase);
-        assertFalse(testCasesPage.isTestCaseVisible(testCase), "Test case is successfully deleted");
+        assertTrue(testCasesPage.isTestCaseVisible(testCase), "Test case is successfully deleted");
     }
 
     @Test(description = "Test case can be edited")
     public void editTestCase() {
-        String project = faker.food().dish();
+        String project = faker.food().measurement();
         String testCase = faker.food().dish();
         String editedTestCase = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         dashboardPage.
                 open().
                 openProject(project).

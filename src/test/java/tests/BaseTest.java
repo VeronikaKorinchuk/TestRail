@@ -3,15 +3,13 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import pages.administration.ProjectsPage;
 import pages.dashboard.*;
 import pages.LoginPage;
 import utils.PropertyReader;
 
+@Listeners(TestListener.class)
 public class BaseTest {
 
     public String user;

@@ -14,7 +14,7 @@ public class TestRunAndResultsTest extends BaseTest {
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         dashboardPage.
                 open().
                 openProject(project).
@@ -31,12 +31,12 @@ public class TestRunAndResultsTest extends BaseTest {
 
     @Test(description = "Test run can be deleted")
     public void deleteTestRun() {
-        String project = faker.food().dish();
+        String project = faker.food().measurement();
         String testRun = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         dashboardPage.
                 open().
                 openProject(project).
@@ -58,7 +58,7 @@ public class TestRunAndResultsTest extends BaseTest {
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         dashboardPage.
                 open().
                 openProject(project).

@@ -8,11 +8,11 @@ public class ProjectsTest extends BaseTest {
 
     @Test(description = "Check that project can be deleted")
     public void deleteProject() {
-        String project = faker.food().dish();
+        String project = faker.book().genre();
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         projectsPage.
                 open().
                 deleteProject(project);
@@ -23,12 +23,12 @@ public class ProjectsTest extends BaseTest {
 
     @Test(description = "Project can be edited")
     public void editProject() {
-        String project = faker.food().dish();
+        String project = faker.book().publisher();
         String editedProject = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "").
+                createProject(project).
                 editProject(project, editedProject);
         assertEquals(projectDetailsPage.getMessage(), "Successfully updated the project.",
                 "You have received a confirmation of project edition");

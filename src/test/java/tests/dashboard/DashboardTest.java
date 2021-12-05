@@ -9,11 +9,11 @@ public class DashboardTest extends BaseTest{
 
     @Test(description = "Check that project can be created from dashboard")
     public void createProject() {
-        String project = faker.food().dish();
+        String project = faker.book().title();
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         assertEquals(projectsPage.getMessage(), "Successfully added the new project.",
                 "You have received a confirmation of project creation");
         assertTrue(projectsPage.isProjectVisible(project), "Project is successfully created");
