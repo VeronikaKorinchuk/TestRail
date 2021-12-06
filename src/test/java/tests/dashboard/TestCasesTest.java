@@ -44,7 +44,7 @@ public class TestCasesTest extends BaseTest {
 
     @Test(description = "Test case can be edited")
     public void editTestCase() {
-        String project = faker.food().measurement();
+        String project = faker.food().sushi();
         String testCase = faker.food().dish();
         String editedTestCase = faker.food().dish();
         loginPage.
