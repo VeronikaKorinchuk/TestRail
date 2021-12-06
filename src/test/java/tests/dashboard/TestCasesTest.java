@@ -2,62 +2,64 @@ package tests.dashboard;
 
 import org.testng.annotations.Test;
 import tests.BaseTest;
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class TestCasesTest extends BaseTest {
 
     @Test(description = "Test case can be created")
     public void createTestCase() {
-        String project = faker.book().genre();
-        String testCase = faker.book().genre();
+        String project = faker.food().vegetable();
+        String testCase = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         dashboardPage.
                 open().
                 openProject(project).
                 openTestCasesPage().
-                addTestCase(testCase);
-        assertEquals(testCasesPage.getMessage(), "Successfully added the new test case. Add another");
+                createTestCase(testCase);
+        assertEquals(testCasesPage.getMessage(), "Successfully added the new test case. Add another",
+                "You have received a confirmation of test case creation");
     }
 
     @Test(description = "Test case can be deleted")
     public void deleteTestCase() {
-        String project = faker.book().genre();
-        String testCase = faker.book().genre();
+        String project = faker.food().dish();
+        String testCase = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         dashboardPage.
                 open().
                 openProject(project).
                 openTestCasesPage().
-                addTestCase(testCase);
+                createTestCase(testCase);
         projectDetailsPage.
                 openTestCasesPage().
                 deleteTestCase(testCase);
-        assertEquals(testCasesPage.getMessage(), "");
+        assertTrue(testCasesPage.isTestCaseVisible(testCase), "Test case is successfully deleted");
     }
 
     @Test(description = "Test case can be edited")
     public void editTestCase() {
-        String project = faker.book().genre();
-        String testCase = faker.book().genre();
-        String editedTestCase = faker.book().genre();
+        String project = faker.food().sushi();
+        String testCase = faker.food().dish();
+        String editedTestCase = faker.food().dish();
         loginPage.
                 open().
                 login(user, password).
-                createProject(project, "");
+                createProject(project);
         dashboardPage.
                 open().
                 openProject(project).
                 openTestCasesPage().
-                addTestCase(testCase);
+                createTestCase(testCase);
         projectDetailsPage.
                 openTestCasesPage().
                 editTestCase(testCase, editedTestCase);
         assertEquals(testCasesPage.getMessage(), "Successfully updated the test cases.");
+        assertFalse(testCasesPage.isTestCaseVisible(testCase), "Test case is successfully updated");
     }
 }

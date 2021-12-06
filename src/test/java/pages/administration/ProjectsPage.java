@@ -1,7 +1,9 @@
 package pages.administration;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.BasePage;
 import wrappers.Input;
 import static com.codeborne.selenide.Selenide.*;
@@ -12,6 +14,7 @@ public class ProjectsPage extends BasePage {
     public static final String MANAGE_PROJECT_XPATH = "//*[contains(text(), '%s')]//ancestor::*[contains(@class, " +
             "'hoverSensitive')]//descendant::*[@class='icon-small-%s']";
     public static final String DELETE_CHECKBOX_XPATH = "//*[@class='dialog-confirm']//child::strong";
+    public static final String PROJECT_LIST_XPATH = "//*[contains(@class, 'hoverSensitive')]/td[1]/a";
 
     public ProjectsPage open() {
         Selenide.open("index.php?/admin/projects/overview");
@@ -22,6 +25,7 @@ public class ProjectsPage extends BasePage {
         $x(String.format(MANAGE_PROJECT_XPATH, projectName, "edit")).click();
         new Input("name").clear().write(editedProjectName);
         $(By.id(ACCEPT_ID)).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 
@@ -29,6 +33,12 @@ public class ProjectsPage extends BasePage {
         $x(String.format(MANAGE_PROJECT_XPATH, projectName, "delete")).click();
         $x(DELETE_CHECKBOX_XPATH).click();
         $x(CONFIRM_DELETE_XPATH).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
+    }
+
+    public boolean isProjectVisible (String projectName) {
+        WebElement visibleProject = $$x(PROJECT_LIST_XPATH).findBy(Condition.text(projectName));
+        return visibleProject.isDisplayed();
     }
 }

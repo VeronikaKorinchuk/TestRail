@@ -1,6 +1,8 @@
 package pages.dashboard;
 
+import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.BasePage;
 import wrappers.Input;
 import static com.codeborne.selenide.Selenide.*;
@@ -17,11 +19,14 @@ public class TestCasesPage extends BasePage {
     public static final String CONFIRM_EDITION_ID = "confirmDiffSubmit";
     public static final String CONFIRM_DELETE_XPATH = "//*[@id='casesDeletionDialog']//descendant::*[contains(@class, " +
             "'dialog-action-default')]";
+    public static final String TEST_CASE_LIST_XPATH = "//*[contains(@class, 'caseRow ')]//descendant::*[contains" +
+            "(@class, 'title')]";
 
-    public TestCasesPage addTestCase(String testCase) {
+    public TestCasesPage createTestCase(String testCase) {
         $(By.id(ADD_TEST_CASE_ID)).click();
         new Input("title").write(testCase);
         $(By.id(ACCEPT_ID)).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 
@@ -29,6 +34,7 @@ public class TestCasesPage extends BasePage {
         $x(String.format(SELECT_TEST_CASE_XPATH, testCase)).click();
         $(By.id(DELETE_ID)).click();
         $x(CONFIRM_DELETE_XPATH).click();
+        $x(CONFIRM_DELETE_XPATH).shouldNotBe(Condition.visible);
         return this;
     }
 
@@ -39,7 +45,14 @@ public class TestCasesPage extends BasePage {
         new Input("title").clear();
         new Input("title").write(editedTestCase);
         $(By.id(ACCEPT_ID)).click();
+        $(By.id(CONFIRM_EDITION_ID)).shouldBe(Condition.appear);
         $(By.id(CONFIRM_EDITION_ID)).click();
+        $x(messageXpath).shouldBe(Condition.visible);
         return this;
+    }
+
+    public boolean isTestCaseVisible (String testCaseName) {
+        WebElement visibleTestCase = $$x(TEST_CASE_LIST_XPATH).findBy(Condition.text(testCaseName));
+        return visibleTestCase.isDisplayed();
     }
 }
