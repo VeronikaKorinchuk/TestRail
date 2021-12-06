@@ -2,7 +2,6 @@ package tests.dashboard;
 
 import org.testng.annotations.Test;
 import tests.BaseTest;
-
 import static org.testng.Assert.*;
 
 public class TestRunAndResultsTest extends BaseTest {
