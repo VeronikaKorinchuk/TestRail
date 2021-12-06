@@ -39,7 +39,7 @@ public class TestCasesTest extends BaseTest {
         projectDetailsPage.
                 openTestCasesPage().
                 deleteTestCase(testCase);
-        assertFalse(testCasesPage.isTestCaseVisible(testCase), "Test case is successfully deleted");
+        assertTrue(testCasesPage.isTestCaseVisible(testCase), "Test case is successfully deleted");
     }
 
     @Test(description = "Test case can be edited")
