@@ -22,14 +22,12 @@ public class MilestonePage extends BasePage {
         $(By.id(ADD_MILESTONE_ID)).click();
         new Input("name").write(milestoneName);
         $(By.id(ACCEPT_ID)).click();
-        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 
     public MilestonePage deleteMilestone(String milestoneName) {
         $x(String.format(DELETE_MILESTONE_XPATH, milestoneName)).click();
         $x(CONFIRM_DELETE_XPATH).click();
-        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 
@@ -38,7 +36,6 @@ public class MilestonePage extends BasePage {
         new Input("name").clear();
         new Input("name").write(editedMilestoneName);
         $(By.id(ACCEPT_ID)).click();
-        $x(messageXpath).shouldBe(Condition.visible);
         return this;
     }
 
