@@ -1,10 +1,12 @@
 package tests.dashboard;
 
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+@Log4j2
 public class DashboardTest extends BaseTest{
 
     @Test(description = "Check that project can be created from dashboard")

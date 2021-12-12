@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Step;
 import org.testng.annotations.*;
 import pages.administration.ProjectsPage;
 import pages.dashboard.*;
@@ -25,6 +26,7 @@ public class BaseTest {
 
     @Parameters("browser")
     @BeforeMethod
+    @Step("Setting browser configurations")
     public void setup (@Optional("chrome") String browser) {
         Configuration.baseUrl = System.getenv().getOrDefault("TESTRAIL_URL",
                 PropertyReader.getProperty("testrail.url"));
@@ -49,6 +51,7 @@ public class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
+    @Step("Close webDriver")
     public void tearDown() {
         Selenide.closeWebDriver();
     }
