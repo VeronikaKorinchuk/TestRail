@@ -3,15 +3,21 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.testng.annotations.*;
 import pages.administration.ProjectsPage;
 import pages.dashboard.*;
 import pages.LoginPage;
 import utils.PropertyReader;
+import static com.codeborne.selenide.Selenide.*;
+import static pages.BasePage.CONFIRM_DELETE_XPATH;
+import static pages.administration.ProjectsPage.DELETE_CHECKBOX_XPATH;
 
 @Listeners(TestListener.class)
 public class BaseTest {
 
+    public static final String DELETE_BUTTON_CLASSNAME = "icon-small-delete";
     public String user;
     public String password;
     public LoginPage loginPage;
@@ -25,7 +31,8 @@ public class BaseTest {
 
     @Parameters("browser")
     @BeforeMethod
-    public void setup (@Optional("chrome") String browser) {
+    @Step("Setting browser configurations")
+    public void setup(@Optional("chrome") String browser) {
         Configuration.baseUrl = System.getenv().getOrDefault("TESTRAIL_URL",
                 PropertyReader.getProperty("testrail.url"));
         user = System.getenv().getOrDefault("TESTRAIL_USER",
@@ -49,7 +56,24 @@ public class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
+    @Step("Close webDriver")
     public void tearDown() {
         Selenide.closeWebDriver();
+    }
+
+    @AfterSuite
+    @Step("Deleting all projects")
+    public void deleteAll() {
+        loginPage.
+                open().
+                login(user, password);
+        projectsPage.
+                open();
+        int numberOfProjects = $$(By.className(DELETE_BUTTON_CLASSNAME)).size();
+        for (int i = 0; i < numberOfProjects; i++) {
+            $(By.className(DELETE_BUTTON_CLASSNAME)).click();
+            $x(DELETE_CHECKBOX_XPATH).click();
+            $x(CONFIRM_DELETE_XPATH).click();
+        }
     }
 }

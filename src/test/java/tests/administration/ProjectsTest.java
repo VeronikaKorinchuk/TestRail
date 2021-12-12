@@ -1,9 +1,11 @@
 package tests.administration;
 
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 import static org.testng.Assert.*;
 
+@Log4j2
 public class ProjectsTest extends BaseTest {
 
     @Test(description = "Check that project can be deleted")
