@@ -1,6 +1,5 @@
 package pages.dashboard;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -28,7 +27,6 @@ public class DashboardPage extends BasePage {
         new Input("name").write(projectName);
         new Input("suite_mode_single").select();
         $(By.id(ACCEPT_ID)).click();
-        $x(MESSAGE_XPATH).shouldBe(Condition.visible);
         return new ProjectsPage();
     }
 

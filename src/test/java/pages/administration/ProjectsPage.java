@@ -30,7 +30,7 @@ public class ProjectsPage extends BasePage {
         $x(String.format(MANAGE_PROJECT_XPATH, projectName, "edit")).click();
         new Input("name").clear().write(editedProjectName);
         $(By.id(ACCEPT_ID)).click();
-        $x(MESSAGE_XPATH).shouldBe(Condition.visible);
+        //$x(DELETE_MESSAGE_XPATH).shouldBe(Condition.visible);
         return this;
     }
 
@@ -39,7 +39,7 @@ public class ProjectsPage extends BasePage {
         $x(String.format(MANAGE_PROJECT_XPATH, projectName, "delete")).click();
         $x(DELETE_CHECKBOX_XPATH).click();
         $x(CONFIRM_DELETE_XPATH).click();
-        $x(DELETE_MESSAGE_XPATH).shouldBe(Condition.visible);
+        $x(MESSAGE_XPATH).shouldBe(Condition.visible);
         return this;
     }
 
