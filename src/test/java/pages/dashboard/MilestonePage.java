@@ -42,6 +42,7 @@ public class MilestonePage extends BasePage {
         new Input("name").clear();
         new Input("name").write(editedMilestoneName);
         $(By.id(ACCEPT_ID)).click();
+        $(By.id(ACCEPT_ID)).shouldNotBe(Condition.visible);
         return this;
     }
 
